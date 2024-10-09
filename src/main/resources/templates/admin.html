@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<h3>Reservations</h3>
+<table>
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Car Id</td>
+        <td>Start date</td>
+        <td>End date</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Phone</td>
+        <td>Full Price HUF</td>
+    </tr>
+    </thead>
+    <tbody th:each="reservationDto : ${adminDto.getReservationDtoList()}">
+    <tr>
+        <td th:text="${reservationDto.getId()}"></td>
+        <td th:text="${reservationDto.getCarDto().getId()}"></td>
+        <td th:text="${reservationDto.getStartDate()}"></td>
+        <td th:text="${reservationDto.getEndDate()}"></td>
+        <td th:text="${reservationDto.getName()}"></td>
+        <td th:text="${reservationDto.getEmail()}"></td>
+        <td th:text="${reservationDto.getAddress()}"></td>
+        <td th:text="${reservationDto.getPhone()}"></td>
+        <td th:text="${reservationDto.getFullPrice()}"></td>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <tr>
+        <td>
+            <h3>Cars</h3>
+            <form action="/admin/editcar" method="get">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Car Id</td>
+                        <td>Type</td>
+                        <td>Available</td>
+                        <td>Price/Day HUF</td>
+                        <td>Image</td>
+                        <td>Click to edit</td>
+                    </tr>
+                    </thead>
+                    <tbody th:each="carDto : ${adminDto.getCarDtoList()}">
+                    <tr>
+                        <td th:text="${carDto.getId()}"></td>
+                        <td th:text="${carDto.getType()}"></td>
+                        <td th:text="${carDto.isAvailable()}"></td>
+                        <td th:text="${carDto.getPrice()}"></td>
+                        <td>
+                            <img th:src="'data:image/jpeg;base64,' + ${carDto.getImageBase64()}" width="150">
+                        </td>
+                        <td>
+                            <button type="submit" name="carId" th:value="${carDto.getId()}">Edit</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </td>
+        <td>
+            <h3>Add new car</h3>
+            <form action="/admin/newcar" enctype="multipart/form-data" method="post">
+                <label>Type:
+                    <input type="text" name="type"/>
+                </label></br>
+                <label>Is it available?
+                    <select name="isAvailable">
+                        <option>-</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </label></br>
+                <label>Price:
+                    <input type="number" name="price"/>
+                </label></br>
+                <label>Image:
+                    <input type="file" name="file"/>
+                </label></br>
+                <input type="submit" value="Add"/>
+            </form>
+            <p th:if="${carDto} != null">
+                <label name="errorMsg" style="color: red" th:if="${carDto.isNewCarSaved()}  == false">
+                    Please select answer for availability!</label>
+            </p>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

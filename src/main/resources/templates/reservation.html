@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start reservation</title>
+</head>
+<body>
+<h3>Start reservation</h3>
+<form action="/cars/endres" method="post">
+    <input name="carId" type="hidden" th:value="${reservationDto.getCarDto().getId()}"/>
+    <input name="startDate" type="hidden" th:value="${reservationDto.getStartDate()}"/>
+    <input name="endDate" type="hidden" th:value="${reservationDto.getEndDate()}"/>
+    <label>Name:
+        <input type="text" name="name"/>
+    </label>
+    </br>
+    <label>Email:
+        <input type="text" name="email"/>
+    </label>
+    </br>
+    <label>Address:
+        <input type="text" name="address"/>
+    </label>
+    </br>
+    <label>Phone:
+        <input type="text" name="phone"/>
+    </label>
+    </br>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
