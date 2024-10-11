@@ -127,7 +127,7 @@ public class AdminService {
     }
 
     private void saveCarDto(CarDto carDto) {
-        Car car = new Car(carDto.getId(), carDto.getType(), carDto.isAvailable(), carDto.getPrice(), carDto.getImage());
+        Car car = new Car(carDto.getId(), carDto.getType(), carDto.isAvailable(), carDto.getPrice(), carDto.getImageByteArray());
 
         db.saveCar(car);
     }

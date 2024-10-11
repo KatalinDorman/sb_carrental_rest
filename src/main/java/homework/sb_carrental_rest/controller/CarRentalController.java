@@ -19,6 +19,7 @@ public class CarRentalController {
     public CarDtoList loadAvailableCars(@RequestParam(name = "startDate") LocalDate startDate,
                                         @RequestParam(name = "endDate") LocalDate endDate) {
 
+
         return carRentalService.getAvailableCarsForChosenPeriod(startDate, endDate);
     }
 

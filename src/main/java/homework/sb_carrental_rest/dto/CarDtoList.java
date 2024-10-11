@@ -13,4 +13,13 @@ public class CarDtoList {
     private List<CarDto> carDtoList;
     private LocalDate startDate;
     private LocalDate endDate;
+
+    @Override
+    public String toString() {
+        return "CarDtoList{" +
+                "carDtoList=" + carDtoList +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
+    }
 }
