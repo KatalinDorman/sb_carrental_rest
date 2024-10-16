@@ -31,7 +31,6 @@ public class CarRentalService {
         }
 
         carDtoList = new CarDtoList(availableCarDtoList, startDate, endDate);
-        System.out.println("**********" + carDtoList.toString());
 
         return carDtoList;
     }
