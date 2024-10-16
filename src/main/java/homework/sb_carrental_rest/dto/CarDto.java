@@ -41,16 +41,4 @@ public class CarDto {
     public byte[] getImageByteArray() {
         return Base64.getDecoder().decode(this.image);
     }
-
-    @Override
-    public String toString() {
-        return "CarDto{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", available=" + available +
-                ", price=" + price +
-                ", image='" + image + '\'' +
-                ", newCarSaved=" + newCarSaved +
-                '}';
-    }
 }
